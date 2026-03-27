@@ -1,0 +1,2 @@
+espn-api>=0.45,<1
+python-dotenv>=1.0,<2

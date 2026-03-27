@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>ESPN Fantasy Baseball League</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css?v=44">
+  <link rel="stylesheet" href="css/variables.css?v=44">
+  <link rel="stylesheet" href="css/components.css?v=44">
+    <link rel="stylesheet" href="css/app.css?v=46">
+</head>
+<body>
+  <div id="app">
+    <!-- ESPN Top Navigation -->
+    <nav class="espn-top-nav">
+      <div class="espn-top-nav-content">
+        <div class="espn-top-nav-left">
+          <a href="#" class="espn-logo">
+            <img src="https://a.espncdn.com/redesign/assets/img/logos/espn-404@2x.png" alt="ESPN" class="espn-logo-img">
+          </a>
+        </div>
+        <div class="espn-top-nav-right">
+          <span class="espn-last-updated" id="last-updated">-</span>
+          <span class="update-warning-badge">
+            <span class="warning-icon">!</span>
+            <span class="warning-text">기록은 당일 모든 경기 완료 후 업데이트 됨</span>
+          </span>
+          <select id="season-select" class="season-select-header">
+            <!-- Options will be populated dynamically by app.js -->
+          </select>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Fantasy Baseball Header -->
+    <header class="fantasy-header">
+      <div class="fantasy-header-content">
+        <div class="fantasy-branding">
+          <div class="fantasy-logo">
+            <img src="https://a.espncdn.com/combiner/i?img=i/fantasy/flb.png&w=60&h=60&transparent=true" alt="Fantasy Baseball" class="fantasy-logo-img">
+          </div>
+          <div class="fantasy-title-group">
+            <h1 class="fantasy-title">Fantasy Baseball</h1>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Fantasy Navigation Tabs -->
+    <nav class="fantasy-tab-nav">
+      <div class="fantasy-tab-container">
+        <button class="fantasy-tab active" data-tab="overview">Standings</button>
+        <button class="fantasy-tab" data-tab="weeklyTrend">Weekly Trend</button>
+        <button class="fantasy-tab" data-tab="categoryAnalysis">Category Analysis</button>
+        <button class="fantasy-tab" data-tab="teamProfile">Team Profile</button>
+        <button class="fantasy-tab" data-tab="playoffs">Playoffs</button>
+        <button class="fantasy-tab" data-tab="overallStandings">Overall Standings</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="page-content">
+      <!-- Overview Tab -->
+      <section id="overview" class="tab-content active">
+        <div class="standings-container">
+          <div class="card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <h2 class="card-title">Standings</h2>
+                <p class="card-subtitle" id="standings-subtitle">전체 시즌 순위</p>
+              </div>
+              <select id="period-filter" class="select">
+                <option value="all">전체</option>
+                <option value="recent3">최근 3주</option>
+                <option value="recent5">최근 5주</option>
+              </select>
+            </div>
+            <div class="table-container">
+              <table id="standings-table">
+                <thead>
+                  <tr>
+                    <th>순위</th>
+                    <th>팀</th>
+                    <th class="sortable" data-sort="wins">승 ↕</th>
+                    <th class="sortable" data-sort="losses">패 ↕</th>
+                    <th class="sortable" data-sort="ties">무 ↕</th>
+                    <th class="sortable" data-sort="winPct">승률 ↕</th>
+                    <th class="sortable" data-sort="gb">GB ↕</th>
+                    <th>주간전적</th>
+                  </tr>
+                </thead>
+                <tbody id="standings-body">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Weekly Trend Tab -->
+      <section id="weeklyTrend" class="tab-content">
+        <div class="weekly-trend-container">
+          <div class="card">
+            <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <h2 class="card-title">Weekly Trend</h2>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <select id="y-axis-mode" class="select">
+                  <option value="winRate">승률</option>
+                  <option value="ranking">순위</option>
+                </select>
+                <select id="chart-mode" class="select">
+                  <option value="static">정적 그래프</option>
+                  <option value="animated">애니메이션</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="trend-chart"></canvas>
+            </div>
+            <!-- Animation Controls -->
+            <div id="race-controls" class="race-controls" style="display: none; padding: 16px; border-top: 1px solid #E7E0EC;">
+              <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+                <button id="race-play-pause" class="btn-icon" style="width: 40px; height: 40px; border-radius: 50%; background: #6750A4; color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                  <span id="play-icon">▶</span>
+                  <span id="pause-icon" style="display: none;">⏸</span>
+                </button>
+                <div style="flex: 1;">
+                  <input type="range" id="race-slider" min="1" max="22" value="1" step="0.1" style="width: 100%; height: 6px; -webkit-appearance: none; background: #E7E0EC; border-radius: 3px; outline: none;">
+                </div>
+                <div id="race-week-display" style="font-weight: 600; color: #6750A4; font-size: 16px; min-width: 80px; text-align: center;">Week 1</div>
+              </div>
+              <div style="display: flex; justify-content: center; gap: 12px;">
+                <button id="race-record" class="btn-secondary" style="padding: 8px 16px; border-radius: 20px; background: #FEF7FF; color: #6750A4; border: 1px solid #6750A4; cursor: pointer; font-size: 14px; font-weight: 500;">
+                  📹 동영상 저장
+                </button>
+                <div id="recording-status" style="display: none; align-items: center; gap: 8px; padding: 8px 16px; background: #FFDAD6; color: #BA1A1A; border-radius: 20px; font-size: 14px; font-weight: 500;">
+                  <span style="width: 8px; height: 8px; background: #BA1A1A; border-radius: 50%; animation: pulse 1s infinite;"></span>
+                  녹화 중...
+                </div>
+              </div>
+            </div>
+            <div class="legend-container" id="chart-legend">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Analysis Tab -->
+      <section id="categoryAnalysis" class="tab-content">
+        <div class="category-analysis-container" style="padding: 16px;">
+          <div class="card" style="margin-bottom: 16px;">
+            <div class="card-header" style="padding: 16px;">
+              <h2 class="card-title">Category Analysis</h2>
+              <p class="card-subtitle">Team Performance by Category (1st = Outer, 12th = Inner)</p>
+            </div>
+          </div>
+          <!-- Grid container for 12 team charts -->
+          <div id="category-grid-container">
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Profile Tab -->
+      <section id="teamProfile" class="tab-content">
+        <div class="team-profile-container" style="padding: 16px;">
+          <!-- Team Selector -->
+          <div class="card" style="margin-bottom: 16px;">
+            <div class="card-header" style="padding: 16px;">
+              <h2 class="card-title">Team Profile</h2>
+            </div>
+            <div style="padding: 16px; border-top: 1px solid #E7E0EC;">
+              <label style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 0.875rem; color: #79747E;">Select Team:</span>
+                <select id="team-profile-select" class="select" style="flex: 1;">
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <!-- Team Info Card -->
+          <div id="team-info-card" class="card" style="margin-bottom: 16px; display: none;">
+            <div class="card-header" style="padding: 16px; border-bottom: 1px solid #E7E0EC;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <h3 id="profile-team-name" style="margin: 0; font-size: 20px; font-weight: 600;"></h3>
+                  <p id="profile-team-owner" style="margin: 4px 0 0 0; color: #79747E; font-size: 14px;"></p>
+                </div>
+                <div style="text-align: right;">
+                  <div id="profile-team-rank" style="font-size: 28px; font-weight: 700; color: #6750A4;"></div>
+                  <div style="font-size: 12px; color: #79747E;">Current Rank</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding: 16px;">
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center;">
+                <div>
+                  <div id="profile-record" style="font-size: 18px; font-weight: 600; color: #1C1B1F;"></div>
+                  <div style="font-size: 12px; color: #79747E; margin-top: 4px;">Record</div>
+                </div>
+                <div>
+                  <div id="profile-win-pct" style="font-size: 18px; font-weight: 600; color: #1C1B1F;"></div>
+                  <div style="font-size: 12px; color: #79747E; margin-top: 4px;">Win %</div>
+                </div>
+                <div>
+                  <div id="profile-gb" style="font-size: 18px; font-weight: 600; color: #1C1B1F;"></div>
+                  <div style="font-size: 12px; color: #79747E; margin-top: 4px;">GB</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Trend Chart -->
+          <div id="mini-trend-card" class="card" style="margin-bottom: 16px; display: none;">
+            <div class="card-header" style="padding: 16px; border-bottom: 1px solid #E7E0EC;">
+              <h3 class="card-title" style="margin: 0; font-size: 16px;">Weekly Trend</h3>
+            </div>
+            <div style="padding: 16px; height: 300px;">
+              <canvas id="mini-trend-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Category Strength Chart -->
+          <div id="category-strength-card" class="card" style="margin-bottom: 16px; display: none;">
+            <div class="card-header" style="padding: 16px; border-bottom: 1px solid #E7E0EC;">
+              <h3 class="card-title" style="margin: 0; font-size: 16px;">Category Strength</h3>
+            </div>
+            <div style="padding: 16px; height: 300px;">
+              <canvas id="category-strength-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- H2H Matrix -->
+          <div id="h2h-matrix-card" class="card" style="margin-bottom: 16px; display: none;">
+            <div class="card-header" style="padding: 16px; border-bottom: 1px solid #E7E0EC;">
+              <h3 class="card-title" style="margin: 0; font-size: 16px;">Head-to-Head Records</h3>
+            </div>
+            <div style="padding: 16px; overflow-x: auto;">
+              <table id="h2h-matrix-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                  <tr style="border-bottom: 1px solid #E7E0EC;">
+                    <th style="padding: 8px; text-align: left; font-size: 12px; color: #79747E;">Opponent</th>
+                    <th class="h2h-sortable" data-sort="wins" style="padding: 8px; text-align: center; font-size: 12px; color: #79747E; cursor: pointer; user-select: none;">W ↕</th>
+                    <th class="h2h-sortable" data-sort="losses" style="padding: 8px; text-align: center; font-size: 12px; color: #79747E; cursor: pointer; user-select: none;">L ↕</th>
+                    <th class="h2h-sortable" data-sort="ties" style="padding: 8px; text-align: center; font-size: 12px; color: #79747E; cursor: pointer; user-select: none;">T ↕</th>
+                    <th class="h2h-sortable" data-sort="winRate" style="padding: 8px; text-align: center; font-size: 12px; color: #79747E; cursor: pointer; user-select: none;">승률 ↕</th>
+                  </tr>
+                </thead>
+                <tbody id="h2h-matrix-body">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Recent Games -->
+          <div id="recent-games-card" class="card" style="margin-bottom: 16px; display: none;">
+            <div class="card-header" style="padding: 16px; border-bottom: 1px solid #E7E0EC;">
+              <h3 class="card-title" style="margin: 0; font-size: 16px;">Recent Games (Last 5 Weeks)</h3>
+            </div>
+            <div style="padding: 16px;">
+              <table id="recent-games-table" style="width: 100%; border-collapse: collapse;">
+                <thead>
+                  <tr style="border-bottom: 1px solid #E7E0EC;">
+                    <th style="padding: 8px; text-align: left; font-size: 12px; color: #79747E;">Week</th>
+                    <th style="padding: 8px; text-align: left; font-size: 12px; color: #79747E;">Opponent</th>
+                    <th style="padding: 8px; text-align: center; font-size: 12px; color: #79747E;">Score</th>
+                    <th style="padding: 8px; text-align: center; font-size: 12px; color: #79747E;">Result</th>
+                  </tr>
+                </thead>
+                <tbody id="recent-games-body">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+
+      </section>
+
+      <!-- Playoffs Tab -->
+      <section id="playoffs" class="tab-content">
+        <div class="playoffs-container" style="padding: 16px;">
+        </div>
+      </section>
+
+      <!-- Overall Standings Tab -->
+      <section id="overallStandings" class="tab-content">
+        <div class="overall-standings-container" style="padding: 16px;">
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Spider Chart Modal -->
+  <div id="spider-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+    <div style="background: white; border-radius: 16px; padding: 24px; max-width: 600px; width: 100%; max-height: 90vh; overflow: auto; position: relative;">
+      <button id="spider-modal-close" style="position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; cursor: pointer; color: #666; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='none'">✕</button>
+      <h3 id="spider-modal-title" style="text-align: center; margin: 0 0 20px 0; font-size: 20px; font-weight: 600;"></h3>
+      <div style="height: 400px; position: relative;">
+        <canvas id="spider-modal-canvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script type="module" src="js/app.js?v=60"></script>
+</body>
+</html>

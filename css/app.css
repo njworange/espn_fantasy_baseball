@@ -1,0 +1,938 @@
+/* App Layout */
+
+#app {
+  min-height: 100vh;
+  background: var(--md-sys-color-surface);
+}
+
+/* ESPN Top Navigation */
+.espn-top-nav {
+  background: var(--espn-header-bg);
+  border-bottom: 1px solid #333;
+}
+
+.espn-top-nav-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--space-5);
+  height: 48px;
+}
+
+.espn-top-nav-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.espn-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.espn-logo-img {
+  height: 32px;
+  width: auto;
+}
+
+/* Hidden - navigation links removed */
+.espn-top-links,
+.espn-top-link {
+  display: none;
+}
+
+.espn-top-nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.espn-last-updated {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Update warning badge */
+.update-warning-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 193, 7, 0.15);
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  border-radius: 12px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: #ffc107;
+  white-space: nowrap;
+}
+
+.warning-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background: #ffc107;
+  color: #1a1a1a;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.season-select-header {
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #2d2d2d;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.season-select-header:focus {
+  border-color: var(--espn-red);
+}
+
+.season-select-header option {
+  background: #2d2d2d;
+  color: #fff;
+}
+
+/* Fantasy Baseball Header */
+.fantasy-header {
+  background: var(--espn-fantasy-header-bg);
+  border-bottom: 1px solid var(--espn-fantasy-header-border);
+}
+
+.fantasy-header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4) var(--space-5);
+}
+
+.fantasy-branding {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.fantasy-logo {
+  display: flex;
+  align-items: center;
+}
+
+.fantasy-logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.fantasy-title-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fantasy-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* Hidden - subtitle removed */
+.fantasy-subtitle {
+  display: none;
+  font-size: 14px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-weight: 500;
+  margin: 0;
+}
+
+.fantasy-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.season-select {
+  padding: 8px 16px;
+  border-radius: var(--md-sys-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline);
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 120px;
+  cursor: pointer;
+  outline: none;
+}
+
+.season-select:focus {
+  border-color: var(--espn-red);
+}
+
+/* Fantasy Tab Navigation */
+.fantasy-tab-nav {
+  background: var(--espn-fantasy-header-bg);
+  border-bottom: 2px solid var(--espn-fantasy-header-border);
+}
+
+.fantasy-tab-container {
+  display: flex;
+  gap: var(--space-1);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+.fantasy-tab {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  border: none;
+  background: transparent;
+  color: var(--espn-tab-inactive);
+  font-size: 14px;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.fantasy-tab:hover {
+  color: var(--md-sys-color-on-surface);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.fantasy-tab.active {
+  color: var(--espn-red);
+  border-bottom-color: var(--espn-red);
+  background: transparent;
+}
+
+/* Legacy App Bar Styles - Keep for compatibility */
+.app-bar {
+  display: none;
+}
+
+.app-bar-content,
+.app-bar-title,
+.app-bar-subtitle,
+.app-bar-stats,
+.app-bar-stat-badge {
+  display: none;
+}
+
+.app-bar-stat-value {
+  font-weight: 600;
+}
+
+.app-bar-stat-label {
+  opacity: 0.8;
+}
+
+.season-select {
+  padding: 4px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.875rem;
+  min-width: 100px;
+}
+
+/* Legacy Tab Navigation - Hidden (replaced by fantasy-tab-nav) */
+.tab-navigation,
+.tab-container,
+.tab-button {
+  display: none;
+}
+
+/* Page Content */
+.page-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-5);
+}
+
+/* Tab Contents */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Standings */
+.standings-container {
+  width: 100%;
+}
+
+/* Weekly Trend */
+.weekly-trend-container {
+  width: 100%;
+}
+
+.chart-container {
+  padding: var(--space-4);
+  height: 400px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.chart-container canvas {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.legend-container {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.legend-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Matchups */
+.matchups-list {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.matchup-card {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.matchup-header {
+  font-size: var(--md-sys-typescale-label-large);
+  color: var(--md-sys-color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.matchup-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.matchup-team {
+  flex: 1;
+  text-align: center;
+}
+
+.matchup-team-name {
+  font-size: var(--md-sys-typescale-title-medium);
+  font-weight: 500;
+  margin-bottom: var(--space-1);
+}
+
+.matchup-team-record {
+  font-size: var(--md-sys-typescale-body-small);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.matchup-score {
+  font-size: var(--md-sys-typescale-headline-small);
+  font-weight: 600;
+  color: var(--md-sys-color-primary);
+  min-width: 60px;
+  text-align: center;
+}
+
+.matchup-vs {
+  font-size: var(--md-sys-typescale-label-large);
+  color: var(--md-sys-color-outline);
+  padding: 0 var(--space-2);
+}
+
+.matchup-stats {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+/* Loading & Error */
+.loading-state,
+.error-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: var(--md-sys-typescale-body-large);
+}
+
+.error-state {
+  color: #C62828;
+  background: #FFEBEE;
+  padding: var(--space-4);
+  border-radius: var(--md-sys-shape-corner-small);
+  margin: var(--space-4);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  /* ESPN Top Navigation - Mobile */
+  .espn-top-nav-content {
+    padding: 0 var(--space-3);
+    height: 40px;
+  }
+
+  .espn-logo-img {
+    height: 24px;
+  }
+
+  .espn-last-updated {
+    display: block;
+    font-size: 10px;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .season-select-header {
+    padding: 3px 8px;
+    font-size: 11px;
+    min-width: 80px;
+  }
+
+  /* Warning badge - Mobile: hide text, show only icon */
+  .update-warning-badge {
+    padding: 2px 6px;
+    gap: 4px;
+  }
+
+  .update-warning-badge .warning-text {
+    display: none;
+  }
+
+  .warning-icon {
+    width: 12px;
+    height: 12px;
+    font-size: 9px;
+  }
+
+  /* Fantasy Header - Mobile */
+  .fantasy-header-content {
+    padding: var(--space-3);
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .fantasy-logo-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .fantasy-title {
+    font-size: 18px;
+  }
+
+  /* Fantasy Tabs - Mobile */
+  .fantasy-tab-container {
+    padding: 0 var(--space-2);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .fantasy-tab {
+    padding: 10px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* App Bar - Compact */
+  .app-bar {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .app-bar-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+  }
+
+  .app-bar-title {
+    font-size: 0.875rem;
+    line-height: 1.2;
+  }
+
+  .app-bar-subtitle {
+    display: none;
+  }
+
+  .app-bar-stats {
+    flex-wrap: nowrap;
+    gap: var(--space-2);
+    font-size: 0.75rem;
+  }
+
+  .app-bar-stat-badge {
+    padding: 2px 8px;
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  .app-bar-stat-label {
+    display: inline;
+  }
+
+  /* Tab Navigation */
+  .tab-container {
+    padding: 0 var(--space-2);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab-button {
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.8125rem;
+  }
+
+  /* Page Content */
+  .page-content {
+    padding: var(--space-4);
+  }
+
+  /* Tables - Compact */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -8px;
+    padding: 0 8px;
+  }
+
+  table {
+    font-size: 0.75rem;
+  }
+
+  th {
+    padding: 6px 4px;
+    font-size: 0.6875rem;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 6px 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* Team column - compact, show only owner (for standings table) */
+  #standings-table td:nth-child(2) {
+    min-width: 50px;
+    max-width: 70px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  #standings-table td:nth-child(2) span:first-child {
+    display: inline;
+    font-weight: 500;
+    font-size: 0.8125rem;
+  }
+
+  #standings-table td:nth-child(2) span:nth-child(2) {
+    display: none;
+  }
+
+  #standings-table td:nth-child(2) strong {
+    display: none;
+  }
+
+  /* Overall Standings - show owner and team names */
+  #overall-standings-table td:nth-child(2) {
+    min-width: 100px;
+    max-width: 150px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  #overall-standings-table td:nth-child(2) strong {
+    display: inline;
+    font-weight: 600;
+    font-size: 0.8125rem;
+  }
+
+  #overall-standings-table td:nth-child(2) span {
+    display: none;
+  }
+
+  /* Other columns - tighter spacing */
+  td:nth-child(3),
+  td:nth-child(4),
+  td:nth-child(5),
+  td:nth-child(6) {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  /* Cards */
+  .card {
+    margin: 0 -4px;
+  }
+
+  .card-header {
+    padding: var(--space-3);
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  /* Matchups */
+  .matchup-teams {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .matchup-team-name {
+    font-size: 0.875rem;
+  }
+
+  .matchup-score {
+    font-size: 1.25rem;
+    min-width: 48px;
+  }
+
+  /* Weekly Trend */
+  .chart-container {
+    height: 300px;
+    padding: var(--space-2);
+  }
+
+  .legend-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-1);
+  }
+
+  .legend-item {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+  }
+
+  /* Legend container - mobile fix (4x3 grid) */
+  .legend-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .legend-item.select-all-item {
+    grid-column: 1 / -1 !important;
+  }
+
+  /* Standings Team Name */
+  td:nth-child(2) {
+    min-width: 140px;
+  }
+
+  td:nth-child(2) span:first-child {
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  td:nth-child(2) span:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  /* ESPN Top Navigation - Ultra compact */
+  .espn-top-nav-content {
+    padding: 0 12px;
+    height: 36px;
+  }
+
+  .espn-logo-img {
+    height: 20px;
+  }
+
+  .season-select-header {
+    padding: 2px 6px;
+    font-size: 10px;
+    min-width: 70px;
+  }
+
+  /* Fantasy Header - Ultra compact */
+  .fantasy-header-content {
+    padding: 8px 12px;
+  }
+
+  .fantasy-logo-img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .fantasy-title {
+    font-size: 16px;
+  }
+
+  /* Fantasy Tabs - Ultra compact */
+  .fantasy-tab {
+    padding: 8px 10px;
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+
+  /* App Bar - Ultra compact */
+  .app-bar {
+    padding: 8px 12px;
+  }
+
+  .app-bar-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .app-bar-title {
+    font-size: 0.8125rem;
+  }
+
+  .app-bar-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .season-select {
+    padding: 2px 8px;
+    font-size: 0.75rem;
+  }
+
+  /* Tabs */
+  .tab-button {
+    padding: 6px 10px;
+    font-size: 0.6875rem;
+  }
+
+  /* Content */
+  .page-content {
+    padding: 12px 8px;
+  }
+
+  /* Table - Ultra compact */
+  table {
+    font-size: 0.75rem;
+  }
+
+  th, td {
+    padding: 4px 2px;
+    font-size: 0.75rem;
+  }
+
+  /* Team column - very compact */
+  td:nth-child(2) {
+    min-width: 45px;
+    max-width: 60px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  td:nth-child(2) span:first-child {
+    font-size: 0.8125rem;
+  }
+
+  /* Stats columns - minimal spacing */
+  td:nth-child(3),
+  td:nth-child(4),
+  td:nth-child(5),
+  td:nth-child(6) {
+    padding-left: 1px;
+    padding-right: 1px;
+  }
+
+  /* GB column - show with minimal width */
+  th:nth-child(7), td:nth-child(7) {
+    padding-left: 1px;
+    padding-right: 1px;
+    min-width: 30px;
+  }
+
+  /* Hide weekly record column */
+  th:nth-child(8), td:nth-child(8) {
+    display: none;
+  }
+
+  .matchup-teams {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .matchup-vs {
+    transform: rotate(90deg);
+  }
+
+  .legend-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .legend-item {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+
+  .legend-item.select-all-item {
+    grid-column: span 2 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .legend-container {
+    grid-template-columns: 1fr;
+  }
+
+  .legend-item.select-all-item {
+    grid-column: span 1 !important;
+  }
+
+  /* Team Profile - Mobile */
+  .team-profile-container {
+    padding: 8px !important;
+  }
+
+  .team-profile-container .card {
+    margin-bottom: 12px !important;
+  }
+
+  .team-profile-container .card-header {
+    padding: 12px !important;
+  }
+
+  #profile-team-name {
+    font-size: 16px !important;
+  }
+
+  #profile-team-rank {
+    font-size: 22px !important;
+  }
+
+  #profile-record, #profile-win-pct, #profile-gb {
+    font-size: 14px !important;
+  }
+
+  /* Team Profile Charts - Mobile */
+  #mini-trend-card > div:last-child,
+  #category-strength-card > div:last-child {
+    height: 220px !important;
+    padding: 12px !important;
+  }
+
+  /* H2H Matrix - Mobile */
+  #h2h-matrix-table th,
+  #h2h-matrix-table td {
+    padding: 6px 4px !important;
+    font-size: 11px !important;
+  }
+
+  /* Recent Games - Mobile */
+  #recent-games-table th,
+  #recent-games-table td {
+    padding: 6px 4px !important;
+    font-size: 11px !important;
+  }
+
+  /* Playoffs - Mobile */
+  .playoffs-container [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .playoffs-container [style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Playoffs - Desktop side by side */
+.playoffs-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: stretch;
+}
+
+.playoffs-bottom-row > .card {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.playoffs-bottom-row > .card > div:last-child {
+  flex: 1;
+}
+
+.playoffs-bottom-row table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.playoffs-bottom-row td,
+.playoffs-bottom-row th {
+  white-space: nowrap;
+}
+
+.playoffs-mobile-only {
+  display: none;
+}
+
+.playoffs-desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .playoffs-bottom-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .playoffs-desktop-only {
+    display: none !important;
+  }
+
+  .playoffs-mobile-only {
+    display: block !important;
+  }
+}

@@ -1,0 +1,208 @@
+/* Components - ESPN Style */
+
+/* Cards */
+.card {
+  background: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.card-outlined {
+  background: var(--md-sys-color-surface);
+  border-radius: var(--md-sys-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: var(--space-4) var(--space-4) var(--space-2);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: var(--space-1);
+  letter-spacing: -0.3px;
+}
+
+.card-subtitle {
+  font-size: var(--md-sys-typescale-body-medium);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.card-content {
+  padding: var(--space-4);
+}
+
+/* Tables - ESPN Style */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--md-sys-color-outline-variant);
+  background: var(--md-sys-color-surface-variant);
+}
+
+th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+th.sortable:hover {
+  background: #E8E8E8;
+  color: var(--md-sys-color-on-surface);
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-on-surface);
+}
+
+tr:hover td {
+  background: #F5F5F5;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Chips - ESPN Style */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.chip-filled {
+  background: var(--espn-red);
+  color: white;
+}
+
+.chip-success {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.chip-error {
+  background: #FFEBEE;
+  color: #C62828;
+}
+
+.chip-neutral {
+  background: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Select - ESPN Style */
+.select {
+  padding: 8px 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 4px;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.select:hover {
+  border-color: var(--espn-red);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--espn-red);
+  box-shadow: 0 0 0 2px rgba(200, 16, 46, 0.2);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.empty-state-title {
+  font-size: var(--md-sys-typescale-headline-small);
+  font-weight: 700;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: var(--space-2);
+}
+
+.empty-state-text {
+  font-size: var(--md-sys-typescale-body-medium);
+}
+
+/* ESPN Links */
+.espn-link {
+  color: var(--espn-link-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.espn-link:hover {
+  color: var(--espn-blue-hover);
+  text-decoration: underline;
+}
+
+/* ESPN Buttons */
+.espn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.espn-btn-primary {
+  background: var(--espn-red);
+  color: white;
+}
+
+.espn-btn-primary:hover {
+  background: var(--espn-red-dark);
+}
+
+.espn-btn-secondary {
+  background: white;
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline);
+}
+
+.espn-btn-secondary:hover {
+  background: var(--md-sys-color-surface-variant);
+}

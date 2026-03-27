@@ -1,0 +1,75 @@
+/* ESPN Color System */
+:root {
+  /* ESPN Brand Colors */
+  --espn-red: #C8102E;
+  --espn-red-dark: #A00D24;
+  --espn-dark: #1a1a1a;
+  --espn-dark-secondary: #2d2d2d;
+  --espn-blue: #0066CC;
+  --espn-blue-hover: #0052A3;
+  
+  /* Material Design 3 Color System - ESPN Theme */
+  /* Primary Colors */
+  --md-sys-color-primary: #C8102E;
+  --md-sys-color-on-primary: #FFFFFF;
+  --md-sys-color-primary-container: #FCE8EB;
+  --md-sys-color-on-primary-container: #5A000C;
+  
+  /* Secondary Colors */
+  --md-sys-color-secondary: #2d2d2d;
+  --md-sys-color-on-secondary: #FFFFFF;
+  --md-sys-color-secondary-container: #E8E8E8;
+  --md-sys-color-on-secondary-container: #1a1a1a;
+  
+  /* Surface Colors */
+  --md-sys-color-surface: #FFFFFF;
+  --md-sys-color-surface-variant: #F5F5F5;
+  --md-sys-color-on-surface: #1a1a1a;
+  --md-sys-color-on-surface-variant: #6B6B6B;
+  
+  /* Outline */
+  --md-sys-color-outline: #D1D1D1;
+  --md-sys-color-outline-variant: #E5E5E5;
+  
+  /* Status */
+  --md-sys-color-error: #C8102E;
+  --md-sys-color-success: #2E7D32;
+  
+  /* ESPN Specific */
+  --espn-header-bg: #1a1a1a;
+  --espn-header-text: #FFFFFF;
+  --espn-fantasy-header-bg: #FFFFFF;
+  --espn-fantasy-header-border: #E5E5E5;
+  --espn-tab-active: #C8102E;
+  --espn-tab-inactive: #6B6B6B;
+  --espn-link-blue: #0066CC;
+  
+  /* Elevation */
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --md-sys-elevation-level2: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  /* Shape */
+  --md-sys-shape-corner-small: 4px;
+  --md-sys-shape-corner-medium: 8px;
+  --md-sys-shape-corner-large: 12px;
+  --md-sys-shape-corner-full: 50%;
+  
+  /* Typography */
+  --md-sys-typescale-display-small: 1.75rem;
+  --md-sys-typescale-headline-small: 1.25rem;
+  --md-sys-typescale-title-large: 1.125rem;
+  --md-sys-typescale-title-medium: 1rem;
+  --md-sys-typescale-body-large: 1rem;
+  --md-sys-typescale-body-medium: 0.875rem;
+  --md-sys-typescale-label-large: 0.875rem;
+  
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+}
